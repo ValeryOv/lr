@@ -7,7 +7,17 @@ const dateInput = document.querySelector('#product-date');
 const specialInput = document.querySelector('#product-special');
 const message = document.querySelector('#message');
 let editingId = null;
-let products = JSON.parse(localStorage.getItem(KEY) || '[]');
+let products = [];
+let storageError = false;
+try {
+  const saved = JSON.parse(localStorage.getItem(KEY) || '[]');
+  if (!Array.isArray(saved) || saved.some(item => !item || !Number.isSafeInteger(item.id) || item.id < 1 || typeof item.name !== 'string' || typeof item.price !== 'number' || !Number.isFinite(item.price) || item.price < 0 || typeof item.special !== 'boolean' || typeof item.date !== 'string')) throw new Error('Дані пошкоджено');
+  products = saved;
+} catch {
+  localStorage.setItem(KEY + '-backup', localStorage.getItem(KEY) || '');
+  localStorage.removeItem(KEY);
+  storageError = true;
+}
 
 function showMessage(text, error = false) {
   message.textContent = text;
@@ -113,3 +123,4 @@ document.querySelector('#reset').addEventListener('click', () => {
 });
 resetForm();
 draw();
+if (storageError) showMessage('Збережені дані пошкоджено. Створено резервну копію; список очищено.', true);
