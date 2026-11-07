@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="uk">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Товари — лабораторна 3–4</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><span class="mark">Z</span><div><small>НАВЧАЛЬНА АДМІНІСТРАТИВНА ПАНЕЛЬ</small><h1>Товари</h1></div><span class="version" id="build">v1.0.0 · варіант 2</span></header>
+<main>
+<section class="panel"><h2 id="form-title">Додати товар</h2><p>Обов’язкові поля позначені *. Дані зберігаються у цьому браузері.</p>
+<form id="product-form" novalidate>
+<div class="fields"><label>ID *<input id="product-id" name="id" inputmode="numeric" placeholder="Наприклад, 10" required></label>
+<label>Назва *<input id="product-name" name="name" maxlength="100" placeholder="Назва товару" required></label>
+<label>Ціна, грн *<input id="product-price" name="price" inputmode="decimal" placeholder="0.00" required></label>
+<label>Дата додавання *<input id="product-date" name="date" type="date" required></label></div>
+<label class="check"><input id="product-special" name="special" type="checkbox">Спеціальна пропозиція (Special)</label>
+<div class="actions"><button id="save" type="submit">Додати товар</button><button id="cancel" class="secondary" type="button" hidden>Скасувати редагування</button></div>
+</form><p id="message" role="status" aria-live="polite"></p></section>
+<section class="panel"><div class="list-heading"><div><h2>Список товарів <span id="count">0</span></h2><p>ID — числове сортування, Special — звичайні або спеціальні.</p></div><div class="sort"><label>Поле<select id="sort-field"><option value="id">ID</option><option value="special">Special</option></select></label><label>Порядок<select id="sort-direction"><option value="asc">За зростанням</option><option value="desc">За спаданням</option></select></label></div></div>
+<div class="table-wrap"><table><thead><tr><th>ID</th><th>Назва</th><th>Ціна, грн</th><th>Special</th><th>Дата додавання</th><th>Дії</th></tr></thead><tbody id="products"></tbody></table></div>
+<p id="empty">Товарів поки немає. Додайте перший товар за допомогою форми.</p>
+<button id="reset" class="secondary small" type="button">Очистити всі товари</button>
+</section><footer>Лабораторна №3–4 · HTML, CSS, JavaScript · Локальний навчальний модуль без авторизації</footer>
+</main><script type="module" src="app.js"></script>
+</body></html>

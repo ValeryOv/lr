@@ -1,0 +1,6 @@
+node_modules/
+.npm-cache/
+template.docx
+build.ps1
+*.zip
+*.docx

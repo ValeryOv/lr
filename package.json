@@ -1,0 +1,13 @@
+{
+  "name": "products-lab34",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.cjs",
+    "test": "node test.cjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.0"
+  }
+}
